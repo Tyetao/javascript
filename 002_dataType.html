@@ -8,7 +8,7 @@
 	
 </body>
 <script type="text/javascript">
-	/******基本数据类型*****/
+	/******基本数据类型就是简单的数据段*****/
 	//javascrip是弱类型变量的语言，根据赋值决定变量的类型
 	//1.Nunber类型
 	var a1 = 10;
@@ -33,21 +33,25 @@
 	// alert(a11)
 
 	//2.undefined 它的值只有一个：undefined表示变量声明了，但是没有被赋值
+	//提示：值 undefined 并不同于未定义的值
 	var b1;
 	// alert(b1)//undefined
 
-	//3.Null 表示一个空的对象应用（赋值为null）
-
+	//3.Null 表示一个空的对象应用（赋值为null）它只有一个专用值 null，即它的字面量。值 undefined 实际上是从值 null 派生来的，因此 ECMAScript 把它们定义为相等的
+	alert(null == undefined);  //输出 "true"
 	//4.String
 	var str1 = "我1";
 
 	//5.Bealoon
-	var flag1 = false;
-	var flag2 = true;
+	var flag1 = false;//或者可以转换成0
+	var flag2 = true;//1
 
-	/****引用数据类型****/
+	/****引用数据类型一种用于将数据和功能组织在一起的数据结构（也常被成为类），引用类型的值（对象）是引用类型的一个实例****/
+	//引用类型通常叫做类（class）。
 	var arr = [];//数组类型
 	var dates = new Date();//日期类型
+	var reg = new RegExp();//正则类型
+	var fn = function();//函数
 	var obj = {}; //空对象
 
 	//typeof 操作赋 用来 判断数据类型
