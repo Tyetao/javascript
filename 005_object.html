@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>object</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//object 所有类的基础类
+
+	// var obj = new Object();
+	var obj = {};//实例化对象
+	obj.name = '123';
+	obj.age = 20;
+	obj['birthday'] = '1994-05-15';
+	obj.say = function(){
+		alert('hello word');
+	}
+	//obj.say();
+	//delete 删除对象的属性和方法
+	// delete age
+
+	//如何去遍历一个js对象 for in 语句式
+	/*
+	for(var attribute in obj) {
+		alert( attribute +" : "+ obj[attribute] );
+	}*/
+	/*****Object每个实例都会具有下列方法和属性******/
+	//constructor保存着用于创建当前对象的函数（构造函数）
+	// alert(obj.constructor);//function Object() { [native code] }
+	// alert([].constructor);//function Array() { [native code] }
+
+	//hasOwnProperty(propertyName)用于检测给定的属性在当前对象实例中（而不是原型中）是否存在。
+	// alert(obj.hasOwnProperty('name'))//TRUE
+
+	//isPrototypeOf 检测原型
+
+	//propertylsEnumerrable 检测是否可被 for in 枚举
+	// alert(obj.propertyIsEnumerable('name'))
+
+	// toLocaleString();
+	// toString();
+	// valueOf();
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var arr = [2,1,2,10,3,5,10,13];
+	//js对象的特性 : 在js对象中key是永远不会重复的
+
+	//1.把数组转成一个js的对象
+	//2.把数组中的值，变成js对象当中的key
+	//3.把这个对象 再还原成数组
+
+	function toObject(arr) {
+		var obj = {};
+		var j;
+		for (var i = 0, j = arr.length ; i < j; i++) {
+			obj[arr[i]] = true;
+		}
+		return obj;
+	}
+	// console.log(toObject(arr))
+
+	function keys(obj) {
+		var arr = [];
+		for (var attr in obj) {
+			if (obj.hasOwnProperty(attr)) {
+				arr.push(attr);
+			}
+		}
+		return arr;
+	}
+
+	function uniq(newarr) {
+		return keys(toObject(newarr));
+	}
+
+	alert(uniq(arr));
+</script>
+</html>

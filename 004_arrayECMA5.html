@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+/**********ECMASCRIPT5中的数组方法**********/
+//ecma5种定义了9个数组的方法来遍历、映射、过滤、检测、简化和搜素方法
+//位置的方法 indexOf lastIndexOf
+//迭代的方法 every filter forEach some map
+//缩小的方法 reduce reduceRight
+
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+//一个参数的时候表示传值 返回索引位置（index从0开始）
+// var index = arr.indexOf(4)//3
+//两个参数的时候 第一个参数表示起始位置 第二个参数还是值
+// var index = arr.indexOf(4,4)//5
+// alert(index)
+//他们查找数组比较的时候 用的是“===”
+
+//lastIndexOf
+// var index = arr.lastIndexOf(1);//返回最后一个找到的
+// alert(index);
+
+
+//every: 对于数组的每一个元素进行一个函数的运行 如果都返回true 最后返回true 如果又一个返回false 最后返回false
+// var result = arr.every(function(item, index, array){
+// 	// console.log(array)
+// 	return item > 0;
+// });
+// alert(result);
+
+//filter: 对于数组的每一个元素进行一个函数的运行 给定的函数去执行 把过滤的结果返回
+// var result = arr.filter(function(item, index, array){
+// 	return item > 2;
+// });
+// alert(result);
+
+//forEach:循环数组每一项的值 并执行一个方法
+// arr.forEach(function(item, index, array){
+// 	alert(item)
+// })
+
+//map 对于数组的每一个元素进行一个函数的运行 可以经过函数执行完毕后 把新的结果返回
+// var result = arr.map(function(item, index, array){
+// 	return item*2;
+// });
+// alert(result);
+
+//some 对于数组的每一个元素进行一个函数的运行 如果都返回false 最后返回false 如果又一个返回true 最后返回true
+// var result = arr.some(function(item, index, array){
+// 	// console.log(array)
+// 	return item > 5;
+// });
+// alert(result);
+
+//reduce reduceRight
+//遍历的起始位置不同
+//前一个值，当前值，索引位置，array
+// var result = arr.reduce(function(prve, cur, indx, array){
+// 	return prve + cur;
+// });
+// alert(result);
+var result = arr.reduceRight(function(prve, cur, indx, array) {
+    return prve + cur;
+});
+alert(result);
+</script>
+
+</html>
