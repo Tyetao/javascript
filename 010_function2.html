@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//3中方式定义函数
+
+	//1 funtion语句式 静态 函数作用域 只执行一次
+	/*function test1(){
+		alert('test1');
+	}
+
+	//2 函数的直接量	静态 函数作用域 只执行一次
+	var test2 = function(){
+		alert('test2');
+	}
+
+	//3 Funtion构造函数式 动态  顶级作用域  每次执行都会被new一次
+
+	var test3 = new Function("a","b","return a + b;");
+	alert(test3(10,20))*/
+
+	//效率对比
+	/*var d1 = new Date();
+	var t1 = d1.getTime();
+	for (var i = 0; i < 100000; i++) {
+		// function test1(){};
+		var test2 = new Function();
+	}
+	var d2 = new Date();
+	var t2 = d2.getTime();
+	alert(t2 - t1);*/
+
+	//解析顺序问题对于function语句式的函数。js解析器会预先的解释。
+	/*test1();
+	function test1(argument) {
+		alert('test1');
+	}*/
+	/*alert(test2);//表示变量声明了，但是没有被赋值
+	// test2();
+	var test2 = function() {
+		alert('test2')
+	}*/
+
+	//函数执行顺序 4 2 3 3 5 6
+	/*function f() {return 1};
+	alert(f());
+	var f = new Function("return 2");
+	alert(f());
+	var f = function(){return 3};
+	alert(f());
+	function f() {return 4;}//4 覆盖 1
+	alert(f());
+	var f = new Function("return 5");
+	alert(f());
+	var f = function(){return 6};
+	alert(f());*/
+
+	//函数作用域的概念
+	var k = 1;
+	function t1() {
+		var k = 2;
+		// function test(){
+		// 	return k; //2
+		// }
+
+		// var test = function(){
+		// 	return k; //2
+		// }
+
+		var test = new Function('return k');//1
+
+		alert(test())
+	}
+	t1();
+
+
+
+
+
+
+
+
+
+</script>
+</html>

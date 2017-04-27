@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//参数列表相当于函数的入口，return相当于函数的出口
+	// function test(a, b) {
+	// 	return a + b;
+	// }
+	// alert(typeof test);//函数也是一种数据类型（function类型）
+
+	//在ja中函数是可以嵌套定义的（尽量不要这样做）
+	function test3 () {
+		function test4() {
+			alert('I,m is test4');
+		}
+		test4();
+	}
+
+	test3();
+</script>
+</html>
