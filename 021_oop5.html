@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//简单原型		
+		/*function Person () {
+			
+		}
+		
+		Person.prototype = {
+//			constructor: Person,
+			name: 'z3',
+			age: 18,
+			job: 'web',
+			say: function(){
+				alert(this.name);
+			}
+		};*/
+		//ECMA5 给原型对象重新设置构造器方法 Object.definePropery();
+		//3个参数
+		//参数1:重设构造器对象
+		//参数2:设置什么属性
+		//参数3:options配置项
+		/*Object.defineProperty(Person.prototype,'constructor',{
+			enumerable: false,
+			value: Person
+		});
+		
+		var p1 = new Person();*/
+		/*p1.say();
+		alert(Person.prototype.constructor)//Person*/
+		
+		//默认情况下constructor是不能被枚举的
+		/*for (attr in p1) {
+			alert(attr)
+		}*/
+		
+		//原型动态特性
+		//注意简单原型对象的使用顺序(先构建原型对象然后再实例)
+	</script>
+</html>

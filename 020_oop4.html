@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		//Array each
+		//ECMA5 forEach 循环遍历数组的每一项(只适合遍历一维数组)
+
+		/*var arr = [1, 2, 3, [4, [5]]];
+
+		arr.forEach(function(item, index, array) {
+		    alert(item)
+		})*/
+
+		//自己实现一个Array each方法 能遍历多维数组
+
+		var arr = [1, 2, 3, [4, [5, [6]]]];
+
+		Array.prototype.each = function(fn) {
+			try {
+				//1 目的: 遍历数组的每一项 //计数器 记录当前遍历的元素位置
+				this.i || (this.i = 0);
+				//2 严谨的判断什么时候去走each核心方法
+				//当数组的长度大于0的时候 && 专递的参数必须为函数
+				if(this.length > 0 && fn.constructor == Function) {
+					while(this.i < this.length) {
+						var e = this[this.i];
+						//如果当前元素获取到了,并且当前元素是一个数组
+						if(e && e.constructor == Array) {
+							//直接递归操作
+							e.each(fn);
+						} else {
+							//如果不是数组(那就是单个元素)
+							//这个目的就是为了把数组的当前元素专递给fn函数 并让函数执行
+							//fn.apply(e,[e]);
+							fn.call(e, e);
+						}
+						this.i++;
+					}
+					this.i = null; //释放内存 垃圾回收机制回收变量
+				}
+			} catch(e) {
+				//TODO handle the exception
+			}
+			return this;
+		}
+
+		arr.each(function(item) {
+			alert(item);
+		});
+	</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		function extend(sub, sup) {
+			//目的: 实现只继承父类的原型对象
+			var F = new Function(); //1.定义一个空函数  目的:空函数进行中转
+			F.prototype = sup.prototype; //2.实现空函数的原型对象和超类的原型对象转换
+			sub.prototype = new F(); //3.原型继承
+			sub.prototype.constructor = sub; //4.还原子类的构造器
+			//保存一下父类的原型对象   一方面方便解耦 另一方面可以方便获得父类的原型对象
+			sub.supCalss = sup.prototype; //自定义一个子类的静态属性 接收父类的原型对象
+			if(sup.prototype.constructor == Object.prototype.constructor) {
+				sup.prototype.constructor = sup;
+			}
+		}
+
+		//3.原型继承+借用构造函数继承 = 混合继承
+		function Person(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		Person.prototype = {
+			//			constructor: Person,
+			id: 10,
+			sayName: function() {
+				alert('name')
+			}
+		};
+
+		function Boy(name, age, sex) {
+			Boy.supCalss.constructor.call(this, name, age) //借用构造函数继承
+			this.sex = sex;
+		}
+
+		//Boy.prototype = new Person(); //原型继承.继承父类的原型对象
+
+		//只继承了一次父类的原型对象
+		extend(Boy, Person);
+
+		Boy.prototype.sayName = function() {
+			alert('boyName');
+		};
+
+		var b = new Boy('z3', 18, '男');
+		alert(b.name);
+		alert(b.age);
+		alert(b.sex);
+		alert(b.id);
+//		b.sayName();
+		
+		Boy.supCalss.sayName.call(b);
+
+		//混合继承缺点:继承了父类的2次模板,继承了一次父类的原型对象
+
+		//extend:继承了父类的1次模板,继承了一次父类的原型对象
+	</script>
+
+</html>
