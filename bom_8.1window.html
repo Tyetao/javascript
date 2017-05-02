@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//8.1.3窗口位置
+	var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
+	var topPos = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
+	// alert(leftPos); 
+	// alert(topPos); 
+
+	//8.1.4窗口大小
+	//获取页面视口的大小
+	var pageWidth = window.innerWidth,
+		pageHeight = window.innerHeight;
+
+	if (typeof pageWidth != "number") {
+		if (document.compatMode == "css1Compat") {
+			pageWidth = document.documentElement.clientWidth;
+			pageHeight = document.documentElement.clientheight;
+		} else {
+			pageWidth = document.body.clientWidth;
+			pageHeight = document.body.clientheight;
+		}
+	}
+	// alert(pageWidth);
+	// alert(pageHeight);
+
+	//8.1.5导航和打开窗口
+	// window.open();//4个参数 1:要加载url、窗口目标、一个特性字符串、一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值
+	//特性
+	//fullscreen,height,left,localtion,menubar,resizable,scrollbars,status,toolbae,top,width
+
+	// window.open('url','targetName','height=400, width=400');
+	
+	//8.1.6间歇调用和超时调用
+	/*var timerId1 = setTimeout(function(){
+
+	},1000);
+	celarTimeout(timerId1);
+	var timerId2 = setInterval(function(){
+
+	},1000);
+	clearInterval(timerId2);*/
+
+	//8.1.7 系统对话框
+	alert('22');
+	if(confirm('ok')){
+		alert('ok')
+	};
+	var result = prompt('heheh', 'ok');
+
+	if (result != null) {
+		alert('oka');
+	}
+
+</script>
+</html> 
