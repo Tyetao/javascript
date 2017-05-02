@@ -45,9 +45,11 @@
 	obj.sayName = function(){
 		alert(this.name);
 	}
-
 	var p1 = new Person();
 	var p2 = new Person();
+	// console.log('构造函数',Person.prototype);
+	// console.log('原型对象',Person.prototype.constructor);
+	// console.log('实例对象',p1.constructor.prototype);
 	// alert(p1.name);
 	// alert(p2.name);
 	
@@ -56,7 +58,7 @@
 	//原型对象.constructor = 构造函数
 	//alert(obj.constructor)
 	//实例对象.prototype = 原型对象
-	alert(obj.isPrototypeOf(p1));	
+	// alert(obj.isPrototypeOf(p1));	
 
 </script>
 </html>
