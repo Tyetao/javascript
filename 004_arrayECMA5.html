@@ -15,52 +15,66 @@
 //迭代的方法 every filter forEach some map
 //缩小的方法 reduce reduceRight
 
+/*
+ *位置的方法 indexOf 与 lastIndexOf
+ */
 var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
 //一个参数的时候表示传值 返回索引位置（index从0开始）
-// var index = arr.indexOf(4)//3
+var index = arr.indexOf(4);
+console.log('indexOf1:' + index); //3
 //两个参数的时候 第一个参数表示起始位置 第二个参数还是值
-// var index = arr.indexOf(4,4)//5
-// alert(index)
+var index = arr.indexOf(4,4);
+console.log('indexOf2:' + index);  //5
+
 //他们查找数组比较的时候 用的是“===”
 
-//lastIndexOf
-// var index = arr.lastIndexOf(1);//返回最后一个找到的
-// alert(index);
+//从数组的后面开始查起，并且返回最后一个找到的。
+var index = arr.lastIndexOf(1);//返回最后一个找到的
+console.log('lastIndexOf:' + index); //7
 
+/**
+ * 迭代的方法 every filter forEach some map
+ */
 
-//every: 对于数组的每一个元素进行一个函数的运行 如果都返回true 最后返回true 如果又一个返回false 最后返回false
-// var result = arr.every(function(item, index, array){
-// 	// console.log(array)
-// 	return item > 0;
-// });
-// alert(result);
+//every: 对于数组的每一个元素进行一个函数的运行. 如果都返回true,最后返回true .如果又一个返回false,最后返回false
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+var result = arr.every(function(item, index, array){
+	return item > 0;
+});
+console.log('every:' + result);//true
 
-//filter: 对于数组的每一个元素进行一个函数的运行 给定的函数去执行 把过滤的结果返回
-// var result = arr.filter(function(item, index, array){
-// 	return item > 2;
-// });
-// alert(result);
+//filter: 对于数组的每一个元素进行一个函数的运行,给定的函数去执行并把过滤的结果返回
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+var result = arr.filter(function(item, index, array){
+	return item > 2;
+});
+console.log('filter:' + result); //3,4,5,4,3,6
 
 //forEach:循环数组每一项的值 并执行一个方法
-// arr.forEach(function(item, index, array){
-// 	alert(item)
-// })
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+arr.forEach(function(item, index, array){
+	console.log('forEach:' + item);
+})
 
-//map 对于数组的每一个元素进行一个函数的运行 可以经过函数执行完毕后 把新的结果返回
-// var result = arr.map(function(item, index, array){
-// 	return item*2;
-// });
-// alert(result);
+//map 对于数组的每一个元素进行一个函数的运行,可以经过函数执行完毕后,把新的结果返回
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+var result = arr.map(function(item, index, array){
+	return item*2;
+});
+console.log('map:' + result);//map:2,4,6,8,10,8,6,2,12
 
-//some 对于数组的每一个元素进行一个函数的运行 如果都返回false 最后返回false 如果又一个返回true 最后返回true
-// var result = arr.some(function(item, index, array){
-// 	// console.log(array)
-// 	return item > 5;
-// });
-// alert(result);
+//some 对于数组的每一个元素进行一个函数的运行.如果都返回false,最后返回false.如果又一个返回true,最后返回true
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+var result = arr.some(function(item, index, array){
+	return item > 5;
+});
+console.log('some:' + result);//true
 
-//reduce reduceRight
+/**
+ * reduce 与reduceRight
+ */
 //遍历的起始位置不同
+<<<<<<< HEAD
 //前一个值，当前值，索引位置，array
 // var result = arr.reduce(function(prve, cur, indx, array){
 // 	return prve + cur;
@@ -70,6 +84,20 @@ var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
 //     return prve + cur;
 // });
 // alert(result);
+=======
+//prve:前一个值，cur:当前值，index:索引位置，array
+//从左边开始循环
+var arr = [1, 2, 3, 4, 5, 4, 3, 1, 6];
+var result = arr.reduce(function(prve, cur, index, array){
+	return prve + cur;
+});
+console.log('reduce:'+result);//29
+//从右边开始循环
+var result = arr.reduceRight(function(prve, cur, index, array) {
+    return prve + cur;
+});
+console.log('reduceRight:'+result);//29
+>>>>>>> f6a8ea0b1ad6691c26fcbd7a1b318af9528add9d
 </script>
 
 </html>

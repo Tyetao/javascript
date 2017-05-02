@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+//类的概念
+
+//第一种形式。工厂模式
+
+/*function createPerson(name, sex, age){
+	var obj = new Object();
+	obj.name = name;
+	obj.sex = sex;
+	obj.age = age;
+	obj.sayName = function(){
+		alert(this.name);
+	}
+	return obj;
+}
+
+var p1 = new createPerson('z3', '女', 20);
+var p2 = new createPerson('l4', '男', 18);
+
+p1.sayName();*/
+
+//第二种形式 构造函数模式
+function Person(name, sex, age) {
+    this.name = name;
+    this.sex = sex;
+    this.age = age;
+
+    this.sayName = function() {
+        alert(this.name);
+    };
+}
+var p1 = new Person('z3', '女', 20);
+var p2 = new Person('l4', '男', 18);
+
+// alert(p1 == p2)//false
+
+// alert(p1.constructor == Person);//true
+// alert(p2.constructor == Person);//true
+// alert(p1 instanceof Person);
+// alert(p1 instanceof Object);
+
+ 
+//创建对象的实例
+//1 当作构造函数去使用
+var p1 = new Person('z3', '女', 20);
+//2 当作普通的函数去使用
+Person('小2', '衄', 18); //在全局环境里定义属性并复制 直接定义在window上
+//alert(name)
+//3 在另一个对象的作用域使用
+var o = new Object();
+// call apply
+Person.call(o,'小4', '男', 18);
+alert(o.name);
+
+</script>
+
+</html>

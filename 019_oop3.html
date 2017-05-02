@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//Object.getPrototypeOf() 根据实例对象获取原型对象
+	
+	function Person(){};
+
+	Person.name = 'z2';
+	Person.age = 18;
+	Person.sayName = function(){alert(this.name)};
+
+	// var p1 = new Person();
+	// alert(p1.sayName());
+
+	// var prototypeObj = Object.getPrototypeOf(p1);
+	// alert(prototypeObj == Person.prototype);
+
+	/**
+	 * 每次代码读取一个对象属性的时候：首次会进行一次搜索：搜索实例对象里name的属性，看看有没有
+	 * 如果没有，再去p2的实例所对应的原型对象里去搜索name属性 如果没有就返回undefined
+	 */
+	/*var p2 = new Person();
+	p2.name = 'w5';
+	delete p2.name;
+	alert(p2.name);*/
+
+	//判断一个对象属性 是属于原型属性。还是属于实例属性
+	/*var p3 = new Person();
+	p3.name = 'w5';
+	alert(p3.name);
+	alert(p3.hasOwnProperty('name'));*/
+
+	// var p1 = new Person();
+	// alert('name' in p1);//true
+	// var p2 = new Person();
+	// p2.name = 'w3';
+	// alert('name' in p2);//true
+	// 
+	
+	/**
+	 * 判断一个属性是否在原型中
+	 */
+	 /*function hasPrototypeProprety(object, name){
+	 	return !object.hasOwnProperty(naem) && name in object;
+	 }
+	 var p3  =  new Person();
+	 p3.name = '22';
+	 alert(p3, 'name');*/
+
+	 //ECMA5新特性 object.keys();
+	 var p1 = new Person()
+	 p1.name = 'z3';
+	 p1.age = 18;
+	 // var attributes = Object.keys(p1);
+	 // alert(attributes);
+
+	 // var attributes2 = Object.keys(Person.prototype);
+	 // alert(attributes2);
+
+	 //ECMA5 constructor属性： 该属性是不能被枚举的【eable = false】;
+	 //Object.getOwnPropertyNames 枚举对象所有属性：不管该内部属性能否被枚举
+	 var attributes3 = Object.getOwnPropertyNames(Person);//length,name,arguments,caller,prototype,age,sayName
+	 alert(attributes3)
+
+	 
+</script>
+</html>

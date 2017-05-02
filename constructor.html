@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>constructor</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+//基本的constructor
+//1.使继承变得苦难 
+//2.toString()这样的函数是为了每个使用Car构造器创建的新对象而分别重新定义的。应该所有的Car类型实例之间共享。
+function Car(model, year, miles) {
+    this.model = model;
+    this.year = year;
+    this.miles = miles;
+
+    this.toString = function() {
+        return this.model + "has done" + this.year
+    };
+
+}
+var civic = new Car("my", 2009, 20000);
+var mondeo = new Car("you", 2017, 200000);
+console.log(civic);
+console.log(mondeo);
+
+//带原型的constructor
+//注意这里我们使用Object.prototype.newMethod 而不是Object.prototype是为了避免重新定义prototype
+//所以toString()的单一实例就能在所有的Car2对象之间共享
+function Car2(model, year, miles) {
+    this.model = model;
+    this.year = year;
+    this.miles = miles;
+};
+Car2.prototype.toString = function() { //constructor -> Car2
+    return this.model + "has done" + this.year
+};
+
+var civic2 = new Car2("my", 2009, 20000);
+var mondeo2 = new Car2("you", 2017, 200000);
+console.log(civic2);
+console.log(mondeo2);
+</script>
+
+</html>

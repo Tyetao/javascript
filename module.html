@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>module</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    //对象字面量表示法中，一个对象被描述为一组包涵在大括号（{}）中、一逗号分隔的name/value对。最后一对不用加逗号
+    //对象字面量不需要new实例化，但不能用在一个语句的开头。
+    var myModule = {
+        myProperty: "someValue",
+        myMethod: function() {
+            console.log(this.myProperty);
+        }
+    }
+    myModule.myMethod();
+
+    /* module模式使用闭包封装“私有”状态和组织，js没有真正意义上的“私有”，因为没有访问修饰符，所以通过闭包概念来模拟，由于闭包的存在声明的变量和方法只在该模式内部访问。*/
+    console.log("----------------------------");
+    var testModule = (function() {
+        var counter = 0; //该变量完全与全局作用域隔离的，因此他变现的就像是一个私有变量。
+
+        return {
+            incrementCounter: function() {
+                return ++counter;
+            },
+            resetCounter: function() {
+                console.log("counter value prior to reset:" + counter);
+                counter = 0;
+            }
+        };
+    })();
+    testModule.incrementCounter();
+    testModule.resetCounter();
+
+    console.log("----------------------------");
+
+    var myNamespace = (function() {
+        var myPrivateVar = 0; //私有的计数变量
+        var myPrivateMethod = function(bar) { //记录所有参数额私有函数
+            console.log(bar + myPrivateVar);
+        };
+        return {
+            myPublicVar: "foo", //公有变量
+            myPublicFuntion: function(bar) { //调用私有变量和方法的公有函数 揭示
+                myPrivateVar++;
+                myPrivateMethod(bar);
+            }
+        };
+    })();
+    myNamespace.myPublicFuntion("my");
+    </script>
+</body>
+
+</html>

@@ -1,44 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
+
 <body>
-	
 </body>
 <script type="text/javascript">
-	var arr = [2,1,2,10,3,5,10,13];
-	//js对象的特性 : 在js对象中key是永远不会重复的
+//js 数组去重（单元素和对象数组）
 
-	//1.把数组转成一个js的对象
-	//2.把数组中的值，变成js对象当中的key
-	//3.把这个对象 再还原成数组
+//数组去重（单元素）
+var arr = [2, 1, '2', "你好", "你好", 3, 5, 10, 13];
+/**
+ * 思路：js对象的特性，在js对象中key是永远不会重复的
+ * 1.把数组转成一个js的对象
+ * 2.把数组中的值，变成js对象当中的key		
+ * 3.把这个对象 再还原成数组
+ */
 
-	function toObject(arr) {
-		var obj = {};
-		var j;
-		for (var i = 0, j = arr.length ; i < j; i++) {
-			obj[arr[i]] = true;
-		}
-		return obj;
-	}
-	// console.log(toObject(arr))
+function toObject(arr) {
+    var obj = {};
+    var j;
+    for (var i = 0, j = arr.length; i < j; i++) {
+        obj[arr[i]] = true;
+    }
+    return obj;
+}
 
-	function keys(obj) {
-		var arr = [];
-		for (var attr in obj) {
-			if (obj.hasOwnProperty(attr)) {
-				arr.push(attr);
-			}
-		}
-		return arr;
-	}
+function keys(obj) {
+    var arr = [];
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) { //用于检测给定的属性在当前对象实例中（而不是原型中）是否存在
+            arr.push(attr);
+        }
+    }
+    return arr;
+}
 
-	function uniq(newarr) {
-		return keys(toObject(newarr));
-	}
+function uniq(newarr) {
+    return keys(toObject(newarr));
+}
 
-	alert(uniq(arr));
+console.log('unique1:' + uniq(arr));
+
+/**
+ * 思路：用indexOf()特性，当元素在数组中存在返回元素在该数组中的索引值（下标），不存在则返回-1
+ * @arrry  原数组
+ * @return 新数组
+ */
+function unique1(arrry) {
+    var n = []; //临时数组
+    for (var i = 0; i < arrry.length; i++) {
+        if (n.indexOf(arrry[i]) == -1) { //判断原数组元素在临时数组中是否存在
+            n.push(arrry[i]);
+        }
+    }
+    return n;
+}
+console.log('unique2:' + unique1(arr))
+
+//数组去重（对象数组）
+var arr1 = [{
+    name: "张三",
+    age: 20,
+    sex: "男"
+}, {
+    name: "李四",
+    age: 19,
+    sex: "男"
+}, {
+    name: "王五",
+    age: 18,
+    sex: "男"
+}, {
+    name: "小丽",
+    age: 20,
+    sex: "女"
+}, {
+    name: "张三",
+    age: 20,
+    sex: "男"
+}];
+
+/**
+ * 思路：js对象的特性，在js对象中key是永远不会重复的
+ */
+function unique2(arrry) {
+    var unique = {};
+
+    //forEach:循环数组每一项的值 并执行一个方法
+    arr.forEach(function(array) {
+        unique[JSON.stringify(array)] = true;
+    });
+
+    //Object.keys（obj），返回一个数组，数组里是该obj可被枚举的所有属性
+    //map 对于数组的每一个元素进行一个函数的运行,可以经过函数执行完毕后,把新的结果返回
+    arr = Object.keys(unique).map(function(item) {
+        return JSON.parse(item);
+    });
+
+    return arr;
+}
+console.log('unique3:', unique2(arr1));
+
+
+var arr2 = [{
+    name: "张三",
+    age: 20,
+    sex: "男"
+}, {
+    name: "李四",
+    age: 19,
+    sex: "男"
+}, {
+    name: "王五",
+    age: 18,
+    sex: "男"
+}, {
+    name: "小丽",
+    age: 20,
+    sex: "女"
+}, {
+    name: "张三",
+    age: 20,
+    sex: "男"
+}];
+
+/**
+ * @arrry  数组
+ * @key    数组属性值
+ * @n      返回值
+ */
+function unique3(arrry, key) {
+    var n = [arrry[0]];
+
+    for (var i = 1; i < arrry.length; i++) {
+        if (key === undefined) {
+            if (n.indexOf(arrry[i]) == -1) {
+            	n.push(arrry[i]);
+            }
+        } else {
+            var has = false;
+            for (var j = 0; j < n.length; j++) {
+                if (arrry[i][key] == n[j][key]) {
+                    has = true;
+                    break;
+                }
+            }
+            if (!has) {
+                n.push(arrry[i]);
+            }
+        }
+    }
+    return n;
+}
+console.log(unique3(arr1, 'age'))
 </script>
+
 </html>

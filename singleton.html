@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>singleton(单例)模式</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    //单例模式被熟知的原因是因为它限制了类的实例化次数只能一次。
+    //在实例已经存在的情况下，可以通过一个方法创建一个类的来实现实现创建类的新实例;如果已经存在，它会简单的返回该对象的引用。
+    var mySingleton = (function() {
+        var instance;
+
+        function init() {
+            console.log("我只被实例化一次哦！！！");
+
+            function privateMethod() {
+                console.log("I am pritave");
+            }
+            var privateVariable = "Im also private";
+            var privateRandomNumber = Math.random();
+
+            return {
+                publicMethod: function() {
+                    console.log("The public can see me!");
+                },
+                publicProperty: "I am also public",
+                getRandomNumber: function() {
+                    return privateRandomNumber;
+                }
+            }
+        }
+        return {
+            getInstance: function() {
+                if (!instance) {
+
+                    instance = init();
+                }
+                return instance;
+            }
+        }
+    })();
+    var singleA = mySingleton.getInstance();
+    var singleB = mySingleton.getInstance();
+    console.log(singleA.getRandomNumber());
+    console.log(singleB.getRandomNumber());
+    console.log(singleB.getRandomNumber() === singleA.getRandomNumber());
+
+
+    console.log("------------------------------");
+
+
+    var myBanSingleton = (function() {
+        var instance;
+
+        function init() {
+            console.log("每次都创建新实例！！！");
+            var privateRandomNumber = Math.random();
+            return {
+                getRandomNumber: function() {
+                    return privateRandomNumber;
+                }
+            }
+        }
+        return {
+            getInstance: function() {
+
+                instance = init();
+                return instance;
+            }
+        }
+    })();
+    var singleC = myBanSingleton.getInstance();
+    var singleD = myBanSingleton.getInstance();
+    console.log(singleC.getRandomNumber());
+    console.log(singleD.getRandomNumber());
+    console.log(singleC.getRandomNumber() === singleD.getRandomNumber());
+
+    console.log("------------------------------");
+
+
+    //在实践中，当在系统中确实需要一个对象来协调其他对象生时，Singleton模式是很有用。
+    var SingletonTester = (function() {
+        //options：包涵了singleton所需配置信息的对象
+        //e.g var options = {name:"test",pointX:5};
+        function Singleton(options) {
+            //如果未提供options，侧设置为空对象
+            options = options || {};
+            this.name = "SingletonTester";
+            this.pointX = options.pointX || 6;
+            this.pointY = options.pointY || 10;
+        }
+        //实例持有者
+        var instance;
+        //静态变量和方法的模拟
+        var _static = {
+            name: "SingletonTester",
+            //获取实例的方法，返回singleton对象的singleton实例
+            getInstance: function(options) {
+                if (instance === undefined) {
+                    instance = new Singleton(options);
+                }
+                return instance;
+            }
+        }
+        return _static;
+    })();
+    var singletonTester = SingletonTester.getInstance({
+        pointX: 333
+    })
+    console.log(singletonTester.name);
+    </script>
+</body>
+
+</html>
