@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
+
 <body>
-	
 </body>
 <script type="text/javascript">
-	//形参列表
+//形参列表
 
-	//js中 函数的参数：形参 实参
-	/*function test(a,b,c,d){
-		//alert(test.length);//4 形参
-		//函数的实际参数 内部使用一个数组去接受的实际参数
-		//arguments 对象 可以访问函数的实际参数
-		//arguments 对像 只能在函数的内部访问和使用
-		/*alert(arguments[0]);
-		alert(arguments[1]);
+//js中 函数的参数：形参 实参
+/*function test(a,b,c,d){
+	//alert(test.length);//4 形参
+	//函数的实际参数 内部使用一个数组去接受的实际参数
+	//arguments 对象 可以访问函数的实际参数
+	//arguments 对像 只能在函数的内部访问和使用
+	/*alert(arguments[0]);
+	alert(arguments[1]);
 
-		if (test.calles.length == arguments.length) {
-			return a + b;
-		} else {
-			return "参数不正确";
-		}
-
-		//arguments对象 用的最多的还是递归操作
-		//arguments.callee
-		arguments.callee
+	if (test.callee.length == arguments.length) {
+		return a + b;
+	} else {
+		return "参数不正确";
 	}
-	alert(test(10,20))*/
 
-	function fact(num) {
-		if (num <= 1) { 
-			return 1; 
-		} else {
-			return num*arguments.callee(num-1);
-		}
-	}
-	// alert(fact(5))//120
-	var F = fact;
-	fact = null;
-	alert(F(5));//120
+	//arguments对象 用的最多的还是递归操作
+	//arguments.callee
+	arguments.callee
+}
+alert(test(10,20))*/
+
+function fact(num) {
+    if (num <= 1) {
+        return 1;
+    } else {
+        return num * arguments.callee(num - 1);
+    }
+}
+// alert(fact(5))//120
+var F = fact;
+fact = null;
+alert(F(5)); //120
 </script>
+
 </html>
