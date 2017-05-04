@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>title</title>
+	</head>
+
+	<body>
+        
+	</body>
+	<script type="text/javascript">
+		/***10.1.1node类型***/
+		//每个节点都有一个 childNodes 属性，其中保存着一个 NodeList 对象。NodeList 是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。
+		//每个节点都有一个 parentNode 属性，该属性指向文档树中的父节点。
+		//hasChildNodes()也是一个非常有用的方法，这个方法在节点包含一或多个子节点的情况下返回 true；
+		//所有节点都有的最后一个属性是 ownerDocument，该属性指向表示整个文档的文档节点。
+		//appendChild()，用于向 childNodes 列表的末尾添加一个节点。
+		//insertBefore()方法。这个方法接受两个参数：要插入的节点和作为参照的节点。
+		//replaceChild()方法接受的两个参数是：要插入的节点和要替换的节点
+		//removeChild()方法。这个方法接受一个参数，即要移除的节点。
+		//cloneNode()，用于创建调用这个方法的节点的一个完全相同的副本。cloneNode()方法接受一个布尔值参数，表示是否执行深复制。在参数为 true的情况下，执行深复制，也就是复制节点及其整个子节点树；在参数为 false 的情况下，执行浅复制，即只复制节点本身。 
+		//normalize()，这个方法唯一的作用就是处理文档树中的文本节点。
+
+		console.log(Node.ELEMENT_NODE)
+		console.log(Node.ATTRIBUTE_NODE)
+		console.log(Node.TEXT_NODE)
+		console.log(Node.CDATA_SECTION_NODE)
+		console.log(Node.ENTITY_REFERENCE_NODE)
+		console.log(Node.ENTITY_NODE)
+		console.log(Node.PROCESSING_INSTRUCTION_NODE)
+		console.log(Node.COMMENT_NODE)
+		console.log(Node.DOCUMENT_NODE)
+		console.log(Node.DOCUMENT_TYPE_NODE)
+		console.log(Node.DOCUMENT_FRAGMENT_NODE)
+		console.log(Node.NOTATION_NODE)
+		/***10.1.2document类型***/
+		//Document 节点具有下列特征：
+		 //nodeType 的值为 9；
+		 //nodeName 的值为"#document"；
+		 //nodeValue 的值为 null；
+		 //parentNode 的值为 null；
+		 //ownerDocument 的值为 null；
+		 //其子节点可能是一个 DocumentType（最多一个）、Element（最多一个）、ProcessingInstruction或 Comment。
+		//取得对<html>的引用
+		//Document 类型可以表示 HTML 页面或者其他基于 XML 的文档。不过，最常见的应用还是作为HTMLDocument 实例的 document 对象。通过这个文档对象，不仅可以取得与页面有关的信息，而且还能
+		var html = document.documentElement;
+		console.log(html);
+		//取得对<!DOCTYPE>的引用
+		var doctype = document.doctype;
+		console.log(doctype);
+		//取得文档标题
+		var originalTitle = document.title;
+		console.log(originalTitle)
+		//取得完整的 URL
+		var url = document.URL;
+		console.log(url)
+		//取得域名
+		var domain = document.domain;
+		console.log(domain)
+		//取得来源页面的 URL
+		var referrer = document.referrer;
+		console.log(referrer)
+
+		/***10.1.3element***/
+		//Element 节点具有以下特征：
+		//nodeType 的值为 1；
+		//nodeName 的值为元素的标签名；
+		//nodeValue 的值为 null；
+		//parentNode 可能是 Document 或 Element；
+		//其子节点可能是 Element、Text、Comment、ProcessingInstruction、CDATASection 或 EntityReference。
+	</script>
+
+</html>

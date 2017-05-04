@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Blank Page for  Rich Text Editing</title>
+		<link rel="stylesheet" href="datepicker.css" />
+		<script src="datepicker.js"></script>
+	</head>
+	<body>
+		<div id="datepicker"></div>
+		<span class="calendar2-msg"></span>
+	</body>
+	<script type="text/javascript">
+		new niceDatePicker({
+		    dom:document.getElementById('datepicker'),
+		    year:2017,
+		    month:5,
+		    mode:'zh',
+		    onClickDate:function(date){
+		        document.querySelector('.calendar2-msg').innerHTML='calendar2 your selected '+date;
+		    }
+		});
+	</script>
+</html>
