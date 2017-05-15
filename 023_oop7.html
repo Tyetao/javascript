@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 
 	<head>
@@ -10,10 +10,15 @@
 	</body>
 	<script>
 		//js怎么去实现继承: 采用原型链的概念
+		//缺点.由于子类通过原型prototype对父列进行实例化，继承了父类。
+		//1.所以说要是父类的共有属性是引用类型。就会在子类中被所有实例共享.
+		//因此一个子类的实例更改子类原型从父类构造函数中继承来的共有属性就会直接影响到子类。
+		//2.创建父类的时候，无法想父类专递参数，因而在实例化父类的时候也无法对父类构造器内的属性进行初始化。
 		//构造函数 原型对象 实例对象
 
 		function Sup(name) {
 			this.name = name;
+			this.friends = ["z3","l4"];
 		}
 		
 		Sup.prototype = {
@@ -34,10 +39,14 @@
 		//子类的原型对象构造器变成了父类的构造器
 		
 		Sub.prototype = new Sup('z3');
-//		alert(Sub.prototype.constrcutor)////fynction sup(){}
+//		console.log(Sub.prototype.constrcutor)////fynction sup(){}
 
 		var sub1 = new Sub();
-//		alert(sub1.name);
+		var sub2 = new sub();
+		console.log(sub1.friends)//["z3","l4"]
+		sub2.friends.push("w5");
+		console.log(sub1.friends)//["z3","l4","w5"]
+//		console.log(sub1.name);
 		
 		sub1.sayName()
 	</script>
