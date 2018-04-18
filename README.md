@@ -1,8 +1,73 @@
-# javascript入门到放弃
+# javascript入门到放弃  
+### 作用域与作用域链
+***
+
+> 作用域  
+
+  定义：作用域是变量能够引用、函数能够生效的区域 ，它限制了你对内存空间上值的获取和修改 。
+  所有的语言都存在作用域，我们可以理解作用域为js引擎根据名称查找变量的一套规则 。
+  
+  [[scope]]:每个javascript函数都是一个对象，对象中有些属性我们可以访问，
+  但有些我们不能访问，这些属性仅供javascript引擎存取,[[scope]]就是其中一个。
+  [[scope]]指的是我们所说的作用域，其中存储了执行期上下文。 
+  
+> 作用域链
+
+  定义：[[scope]]中所存储的执行期上下文对象的集合，这个集合呈链式链接，我们把这种链式链接叫做作用域链。
+  
+> 执行期上下文  
+
+  定义：
+
+### 闭包  
+***  
+
+缺点： 当内部函数被保存到外部时，将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄漏。
+
+作用： 1.实现公有变量 2.可以做缓存 3.可以实现封装 4.模块化开发，防止污染全局变量  
+
+```js
+function test() {
+  var arr = []
+  for(var i = 0; i < 0; i ++) {
+    arr[i] = function() {
+      console.log(i + ' ')
+    }
+  }
+  return arr
+}
+var myArr = test()
+for(var j = 0; j < 10; j++) {
+  myArr[j]() //10个10 ？？？？？？？？？？？？？
+}
+```
+
+```js
+function test() {
+  var arr = []
+  for(var i = 0; i < 0; i ++) {
+    (function(j){
+      arr[j] = function() {
+        console.log(j + ' ')
+      }
+    })(i)
+  }
+  return arr
+}
+var myArr = test()
+for(var j = 0; j < 10; j++) {
+  myArr[j]() //0-9
+}
+```
+
+### 原型、原型链、call、apply、继承  
+***
+
 > 原型
 
 定义：原型是function对象的一个属性（Person.prototype），它定义了构造函数制造出的对象的公共祖先。
 通过构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象
+
 ```js
   // Person.prototype --原型
   // Person.prototype = {} -- 祖先
@@ -20,6 +85,7 @@ __proto__ 是一个指针指向对象的原型 person.prototype
 > 原型链
 定义：当构造函数的prototypr属性指向一个构造函数实例时，这个实例和它指向的这个实例就构成了一条原型链，
 通过__proto__逐级向上查找（就近原则），最顶层Object.__proto__。
+
 ```js
 Grand.prototype.lastname = 'Grand'
 function Grand() {}
