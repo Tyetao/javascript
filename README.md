@@ -1,6 +1,4 @@
 # javascript入门到放弃
-> 作用域
-  
 > 原型
 
 定义：原型是function对象的一个属性（Person.prototype），它定义了构造函数制造出的对象的公共祖先。
