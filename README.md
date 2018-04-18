@@ -1,4 +1,6 @@
-# javascript
+# javascript入门到放弃
+> 作用域
+  
 > 原型
 
 定义：原型是function对象的一个属性（Person.prototype），它定义了构造函数制造出的对象的公共祖先。
@@ -111,3 +113,4 @@ function Son(height,name, age) {
   let son = new Son()
   let father = new Father()
 ```
+> 命名空间
