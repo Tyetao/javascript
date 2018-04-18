@@ -35,6 +35,8 @@ let son=new Son()
 son.lastname // Grand
 ```
 
+![Alt text](原型链.png)
+
 > call/apply
 定义：改变this指向。区别：传参不一样。
 ```js
